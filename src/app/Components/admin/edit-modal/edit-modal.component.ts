@@ -28,7 +28,6 @@ export class EditModalComponent implements OnInit , OnDestroy{
       'email':new FormControl(this.sharedService.getMembers()?.email,[Validators.required,Validators.email]),
       'address':new FormControl(this.sharedService.getMembers()?.address,[Validators.required]),
       'birthDate':new FormControl(
-        // this.sharedService.getMembers()?.birthDate
         this.datePipe.transform(this.sharedService.getMembers()?.birthDate, 'yyyy-MM-dd')
         ,[Validators.required])
 
@@ -41,26 +40,21 @@ export class EditModalComponent implements OnInit , OnDestroy{
   onSubmit(){
 
     this.addMemberForm.value.enteranceDate=  Date.now();  
-    this.sharedService.setMembers(null) ;
-    console.log(  this.addMemberForm.value.dateOfBirth)
-      // this.subscription= this.adminService.addMember(this.addMemberForm.value).subscribe(
+  
+    this.addMemberForm.value._id=this.sharedService.getMembers()._id;
+  this.subscription=this.adminService.updatemember(this.addMemberForm.value).subscribe(
+    (response)=>{
+      console.log(response);
+      this.message='Admin Updated Succssefully';
 
-      //  (response)=>{
-      //   this.message='Admin Added Succssefully';
-      //    console.log(response);
-
-      //  },
-      //  (err)=>{
-      //        this.message=err.error.message;
-      //  this.error=true;
-      //    console.log(err)
-
-      //  }
-
-
-
-      // );
-
+    },
+    (err)=>{
+      this.message=err.error.message;
+      this.error=true;
+      console.log(err)
+    }
+  )
+  this.sharedService.setMembers(null) ;
     this.addMemberForm.reset();
   }
 

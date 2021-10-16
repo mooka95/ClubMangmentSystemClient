@@ -61,9 +61,10 @@ export class AllMembersComponent implements OnInit,OnDestroy{
 
   }
   editMember(member:MemberImpl){
-    this.sharedService.setMembers(member)
-   this.modalService.open(EditModalComponent);
-  // this.router.navigateByUrl('admin/Home/AddMember')
+ 
+    this.sharedService.setMembers(member);
+   this.router.navigateByUrl('admin/Home/AddMember');
+
   }
 
 

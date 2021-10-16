@@ -33,6 +33,9 @@ export class AdminService {
         return this.http.delete<string>(`${environment.API_URL}/member/${id}`)
 
     }
+    updatemember(member:MemberImpl):Observable<MemberImpl>{
+           return this.http.put<MemberImpl>(`${environment.API_URL}/member`,member);
+    }
    isLoggedIn():boolean{
      if(localStorage.getItem('token'))
      return true;
