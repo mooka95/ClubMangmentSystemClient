@@ -1,0 +1,27 @@
+<div class="card"  *ngFor="  let member of  allMembers " (click)="showMemberDetails(member._id)">
+    <div class="card-body" >
+      <h5 class="card-title" style="font-size: 1.7rem;">{{ member.name}}</h5>
+      <div class="card__utils">
+
+        <i (click)="editMember(member)" class="fas fa-edit card__utils--edit"></i>
+        <i  (click)="deleteMember(member._id)" class="fas fa-trash card__utils--delete"></i>
+      </div>
+
+    
+     
+     </div>
+     <div class="card__details" *ngIf='showDetails && cardId===member._id' >
+        <div>Email: {{member.email}}</div>
+        <div>Address: {{member. address}}</div>
+        <div>BirthDate: {{member.birthDate| date :'shortDate'}}</div>
+        <div>EnteranceDate: {{member.enteranceDate| date :'shortDate'}}</div>
+        <div>Age: {{member.age}}</div>
+     
+  
+        
+ 
+       </div>
+
+</div>
+    
+ 

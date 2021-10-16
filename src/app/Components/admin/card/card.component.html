@@ -1,0 +1,29 @@
+<div class="container login-container" >
+
+
+
+    <div class="card" >
+        <div class="card-body">
+          <h1 class="card-title center-text" >Login</h1>
+          <div class="errorMessage alert alert-danger center-text"  role="alert"*ngIf='message'>{{message}}</div>
+          <form [formGroup]="adminLogin" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"  formControlName="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password"  formControlName="password">
+            </div>
+            <div class="submitBtn">
+                <button type="submit" class="btn btn-primary" [disabled]="!adminLogin.valid">Login</button>
+            </div>
+          </form>
+        
+          
+        </div>
+      </div>
+
+
+
+</div>

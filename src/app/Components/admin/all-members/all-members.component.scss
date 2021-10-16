@@ -1,0 +1,37 @@
+.card{
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    margin-top: 2rem;
+    cursor: pointer;
+    &__details{
+        font-size: 1.8rem;
+        padding:3rem;
+        color: white;
+    }
+ 
+}
+.card-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+  
+}
+.card__utils{
+    font-size: 1.7rem;
+ &--edit{
+     color: green;
+     cursor: pointer;
+
+ }
+ &--delete{
+     margin-left: 1rem;
+     margin-right: 2rem;
+     color: red;
+     cursor: pointer;
+
+ }
+}
+.card__details{
+    background-color: grey;
+}
