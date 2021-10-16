@@ -14,7 +14,10 @@ export class AdminHomeComponent implements OnInit ,OnDestroy{
   subscription:Subscription;
   allMembers:MemberImpl[];
 
-  constructor(private adminService:AdminService,private router:Router,private sharedService:SharedService) { }
+  constructor(private adminService:AdminService,private router:Router,private sharedService:SharedService) { 
+
+
+  }
 
 
   ngOnInit(): void {
@@ -22,11 +25,14 @@ export class AdminHomeComponent implements OnInit ,OnDestroy{
   }
 
   ngOnDestroy(): void {
+    alert("Logging out");
     this.adminService.logout();
 
     this.subscription?.unsubscribe();
-    alert(" YOU Will Logged Out ? ")
 
+    
+  
+  
     
   }
 

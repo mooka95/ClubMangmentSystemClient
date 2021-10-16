@@ -11,8 +11,9 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
 import { AllMembersComponent } from './all-members/all-members.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule,NgbCarousel, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
+
 import { DatePipe } from '@angular/common';
+import { NotFoundComponent } from '../not-found/not-found.component';
 
 const routes: Routes = [
   {path:'login',component:AdminLoginComponent},
@@ -37,7 +38,7 @@ const routes: Routes = [
     AddMemberComponent,
     AddAdminComponent,
     AllMembersComponent,
-    EditModalComponent
+
   ],
   imports: [
     CommonModule,

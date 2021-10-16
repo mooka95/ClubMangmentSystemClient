@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MemberImpl } from './../Models/member-impl';
 import { environment } from './../../environments/environment';
 import { AdminImpl } from './../Models/admin-impl';
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class AdminService {
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router:Router) { }
    adminLogin(admin:AdminImpl):Observable<AdminImpl>{
      return this.http.post<AdminImpl>(`${environment.API_URL}/admin/login`,admin);
    }
@@ -45,6 +46,7 @@ export class AdminService {
 
    logout(){
     localStorage.removeItem('token');
+  
    }
 
 

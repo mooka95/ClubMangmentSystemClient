@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { SharedService } from './../../../Services/shared.service';
 import { AdminService } from './../../../Services/admin.service';
 import { DatePipe } from '@angular/common';
@@ -17,7 +18,7 @@ export class AddMemberComponent implements OnInit ,OnDestroy {
   message:string;
   error:boolean=false;
   
-  constructor(private adminService:AdminService,private sharedService:SharedService,private datePipe: DatePipe) { 
+  constructor(private adminService:AdminService,private sharedService:SharedService,private datePipe: DatePipe,private router:Router) { 
 
   }
 
@@ -44,13 +45,14 @@ export class AddMemberComponent implements OnInit ,OnDestroy {
       this.subscription=this.adminService.updatemember(this.addMemberForm.value).subscribe(
         (response)=>{
           console.log(response);
-          this.message='Admin Updated Succssefully';
+          this.message='Member Updated Succssefully';
     
         },
         (err)=>{
           this.message=err.error.message;
           this.error=true;
-          console.log(err)
+          this.router.navigateByUrl('admin/login')
+
         }
       )
       this.sharedService.setMembers(null) ;
@@ -64,7 +66,7 @@ export class AddMemberComponent implements OnInit ,OnDestroy {
       this.subscription= this.adminService.addMember(this.addMemberForm.value).subscribe(
 
         (response)=>{
-         this.message='Admin Added Succssefully';
+         this.message='Member Added Succssefully';
           console.log(response);
  
         },
@@ -72,6 +74,7 @@ export class AddMemberComponent implements OnInit ,OnDestroy {
               this.message=err.error.message;
         this.error=true;
           console.log(err)
+          this.router.navigateByUrl('/admin/login')
  
         }
  
@@ -86,6 +89,7 @@ export class AddMemberComponent implements OnInit ,OnDestroy {
   }
 
   ngOnDestroy(): void {
+    console.log('destroy add member')
     this.sharedService.setMembers(null) ;
     this.subscription?.unsubscribe();
   }

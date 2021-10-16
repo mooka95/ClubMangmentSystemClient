@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AdminService } from './../../../Services/admin.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +15,7 @@ export class AddAdminComponent implements OnInit ,OnDestroy {
   message:string;
   error:boolean=false;
 
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService,private router:Router) { }
   
 
   ngOnInit(): void {
@@ -35,6 +36,8 @@ export class AddAdminComponent implements OnInit ,OnDestroy {
      (err)=>{
        this.message=err.error.message;
        this.error=true;
+       this.router.navigateByUrl('/admin/login')
+   
      }
 
     )
@@ -42,6 +45,7 @@ export class AddAdminComponent implements OnInit ,OnDestroy {
 
   }
   ngOnDestroy(): void {
+    console.log('destroy add admin ')
     this.subsciption?.unsubscribe();
   }
 

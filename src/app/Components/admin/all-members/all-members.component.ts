@@ -1,4 +1,4 @@
-import { EditModalComponent } from './../edit-modal/edit-modal.component';
+
 import { Router } from '@angular/router';
 import { AddMemberComponent } from './../add-member/add-member.component';
 import { MemberImpl } from './../../../Models/member-impl';
@@ -25,15 +25,15 @@ export class AllMembersComponent implements OnInit,OnDestroy{
 
 
   ngOnInit(): void {
-    console.log("ONINIT")
   this.adminService.getAllMembers().subscribe(
       (response)=>{
-        console.log(response)
+    
        
         this.allMembers=response["members"];
  
       },
       (err)=>{
+        this.router.navigateByUrl('admin/login');
        console.log(err);
       }
  
@@ -53,7 +53,8 @@ export class AllMembersComponent implements OnInit,OnDestroy{
 
         },
         (err)=>{
-          console.log(err)
+          console.log(err);
+          this.router.navigateByUrl('/admin/login')
         }
       )
     }
@@ -82,6 +83,7 @@ export class AllMembersComponent implements OnInit,OnDestroy{
 
 
   ngOnDestroy(): void {
+    console.log('destroy all members ')
    this.subscription?.unsubscribe();
   }
 
